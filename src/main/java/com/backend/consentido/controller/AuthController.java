@@ -11,6 +11,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,7 +27,10 @@ public class AuthController {
     @Autowired
     private CustomUserDetailsService userDetailsService;
 
-    //  Endpoint para login
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    // Endpoint para login
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         try {
@@ -50,7 +54,7 @@ public class AuthController {
             return ResponseEntity.status(409).body("El usuario ya existe.");
         }
 
-        userDetailsService.registrarUsuario(usuario);
+        userDetailsService.registrarUsuario(usuario, passwordEncoder);
         return ResponseEntity.ok("Usuario registrado correctamente.");
     }
 }

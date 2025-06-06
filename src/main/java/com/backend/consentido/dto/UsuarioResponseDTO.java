@@ -1,39 +1,34 @@
-package com.backend.consentido.model;
+package com.backend.consentido.dto;
 
-import jakarta.persistence.*;
+public class UsuarioResponseDTO {
 
-@Entity
-public class Usuario {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario")
     private Long idUsuario;
-
-    private String contrasena;
-
     private String nombre;
-
     private String email;
-
     private String tipoDocumento;
-
     private String numeroDocumento;
-
     private String celular;
-
     private String estado;
+    private String rol;
 
-    @Enumerated(EnumType.STRING)
-    private Rol rol;
+    // Constructor vacío (requerido por frameworks como Jackson)
+    public UsuarioResponseDTO() {}
 
-    public enum Rol {
-        Administrador, Usuario
+    // Constructor completo (opcional pero útil)
+    public UsuarioResponseDTO(Long idUsuario, String nombre, String email, String tipoDocumento,
+                              String numeroDocumento, String celular, String estado, String rol) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.email = email;
+        this.tipoDocumento = tipoDocumento;
+        this.numeroDocumento = numeroDocumento;
+        this.celular = celular;
+        this.estado = estado;
+        this.rol = rol;
     }
 
-    public Usuario() {}
-
     // Getters y Setters
+
     public Long getIdUsuario() {
         return idUsuario;
     }
@@ -42,28 +37,12 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
     }
 
     public String getEmail() {
@@ -104,5 +83,13 @@ public class Usuario {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 }

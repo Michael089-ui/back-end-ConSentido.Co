@@ -1,45 +1,29 @@
-package com.backend.consentido.model;
+package com.backend.consentido.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-public class Usuario {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario")
-    private Long idUsuario;
+public class UsuarioRequestDTO {
 
     private String contrasena;
-
     private String nombre;
-
     private String email;
-
     private String tipoDocumento;
-
     private String numeroDocumento;
-
     private String celular;
-
     private String estado;
+    private String rol;
 
-    @Enumerated(EnumType.STRING)
-    private Rol rol;
-
-    public enum Rol {
-        Administrador, Usuario
+    public UsuarioRequestDTO() {
     }
 
-    public Usuario() {}
-
-    // Getters y Setters
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+    public UsuarioRequestDTO(String contrasena, String nombre, String email, String tipoDocumento,
+                             String numeroDocumento, String celular, String estado, String rol) {
+        this.contrasena = contrasena;
+        this.nombre = nombre;
+        this.email = email;
+        this.tipoDocumento = tipoDocumento;
+        this.numeroDocumento = numeroDocumento;
+        this.celular = celular;
+        this.estado = estado;
+        this.rol = rol;
     }
 
     public String getContrasena() {
@@ -56,14 +40,6 @@ public class Usuario {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
     }
 
     public String getEmail() {
@@ -104,5 +80,13 @@ public class Usuario {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 }

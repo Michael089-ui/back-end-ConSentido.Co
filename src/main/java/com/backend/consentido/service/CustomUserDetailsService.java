@@ -17,9 +17,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private IUsuarioRepository usuarioRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
     @Override
     public UserDetails loadUserByUsername(String nombre) throws UsernameNotFoundException {
         Optional<Usuario> usuarioOpt = usuarioRepository.findByNombre(nombre);
@@ -39,7 +36,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         );
     }
 
-    public Usuario registrarUsuario(Usuario usuario) {
+    public Usuario registrarUsuario(Usuario usuario, PasswordEncoder passwordEncoder) {
         usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena()));
         return usuarioRepository.save(usuario);
     }
@@ -47,5 +44,4 @@ public class CustomUserDetailsService implements UserDetailsService {
     public boolean usuarioExiste(String nombre) {
         return usuarioRepository.findByNombre(nombre).isPresent();
     }
-
 }
