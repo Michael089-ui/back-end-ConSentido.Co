@@ -1,6 +1,4 @@
-Orden sugerido para trabjar en el backend del proyecto :
 
-Te ayudaré a explicar el orden recomendado para trabajar con la estructura MVC (Model-View-Controller) junto con Repository y Service, basado en tu esquema de base de datos.
 
 ### Orden recomendado de desarrollo:
 
@@ -41,4 +39,3 @@ Te ayudaré a explicar el orden recomendado para trabajar con la estructura MVC 
 - Considera agregar validaciones en las entidades
 - Documenta los endpoints con Swagger/OpenAPI
 
-¿Te gustaría que profundice en algún aspecto específico de esta estructura o que te muestre ejemplos de implementación de alguna capa en particular?
