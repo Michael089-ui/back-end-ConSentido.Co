@@ -1,5 +1,8 @@
 package com.backend.consentido.controller;
 
+import com.backend.consentido.dto.UsuarioRequestDTO;
+import com.backend.consentido.dto.UsuarioResponseDTO;
+import com.backend.consentido.mapper.UsuarioMapper;
 import com.backend.consentido.model.Usuario;
 import com.backend.consentido.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
