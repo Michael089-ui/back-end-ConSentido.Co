@@ -24,7 +24,10 @@ public class ProductoService implements IProductoService {
 
     @Override
     public Producto obtenerPorId(Long id) {
-        return productoRepository.findById(id).orElse(null);
+        if (id == null || id > Integer.MAX_VALUE || id < Integer.MIN_VALUE) {
+            throw new IllegalArgumentException("ID fuera del rango válido para Integer");
+        }
+        return productoRepository.findById(id.intValue()).orElse(null);
     }
 
     @Override
@@ -34,12 +37,19 @@ public class ProductoService implements IProductoService {
 
     @Override
     public void eliminarProducto(Long id) {
-        productoRepository.deleteById(id);
+        if (id == null || id > Integer.MAX_VALUE || id < Integer.MIN_VALUE) {
+            throw new IllegalArgumentException("ID fuera del rango válido para Integer");
+        }
+        productoRepository.deleteById(id.intValue());
     }
 
     @Override
     public void editarProducto(Long id, Producto productoActualizado) {
-        Producto productoExistente = productoRepository.findById(id).orElse(null);
+        if (id == null || id > Integer.MAX_VALUE || id < Integer.MIN_VALUE) {
+            throw new IllegalArgumentException("ID fuera del rango válido para Integer");
+        }
+
+        Producto productoExistente = productoRepository.findById(id.intValue()).orElse(null);
         if (productoExistente != null) {
             productoExistente.setNombre(productoActualizado.getNombre());
             productoExistente.setDescripcion(productoActualizado.getDescripcion());

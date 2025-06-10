@@ -7,8 +7,9 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario")
+    @Column(name = "id_usuario")  // 👈 esto es esencial
     private Long idUsuario;
+
 
     private String contrasena;
 
